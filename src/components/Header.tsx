@@ -1,5 +1,6 @@
 
 import Logo from '../assets/logo-white.png'
+import {BsSearch } from 'react-icons/bs'
 import { Link } from "react-router-dom"
 import { useState } from 'react';
 import { FiShoppingBag } from 'react-icons/fi'
@@ -7,11 +8,19 @@ import { GrFormClose } from 'react-icons/gr'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import useMediaQuery from '../hooks/useMediaQuery';
 
-const Header = () => {
+type Props = {
+
+    isTopOfPage: boolean
+
+}
+
+
+const Header = ({ isTopOfPage }: Props) => {
 
     const flexBetween = "flex items-center justify-between"
     const textHover = "transition duration-500 hover:text-red-300"
     const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
+    const navbarBackground = isTopOfPage ? "" : "bg-primary-400";
     const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false)
 
     const closeDropDown = () => {
@@ -24,7 +33,7 @@ const Header = () => {
 
     return (
         <nav>
-            <div className={`top-0 z-30 w-full py-3 bg-slate-600`}>
+            <div className={`${navbarBackground} fixed top-0 z-30 w-full py-3 bg-primary-200 `}>
                 <div className={`${flexBetween} mx-auto w-5/6`}>
                     <div className='flex gap-10'>
                         <div className='flex items-center gap-3'>
@@ -41,12 +50,13 @@ const Header = () => {
                                 <div className="input-group">
                                     <select className="select">
                                         <option>All</option>
-                                        <option>T-shirts</option>
-                                        <option>Mugs</option>
+                                        <option>Gaming-Console</option>
+                                        <option>Laptops</option>
+                                        <option>Phones</option>
                                     </select>
                                     <input type="text" placeholder="Search…" className="input" />
                                     <button className="btn btn-square">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                                        <BsSearch/>
                                     </button>
 
                                 </div>

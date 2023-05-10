@@ -1,7 +1,6 @@
 import HomePage from "./pages/HomePage"
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import Header from "./components/Header"
-import Footer from "./components/Footer"
 import RegisterPage from "./pages/RegisterPage"
 import ProductDetailsPage from "./pages/ProductDetailsPage"
 import ProductListPage from "./pages/ProductListPage"
@@ -25,8 +24,26 @@ import AdminChatsPage from "./pages/admin/AdminChatsPage"
 import AdminAnalyticsPage from "./pages/admin/AdminAnalyticsPage"
 import AdminOrderDetailsPage from "./pages/admin/AdminOrderDetailsPage"
 import RouteWithUserChatComponent from "./components/user/RouteWithUserChatComponent"
+import { useEffect, useState } from "react"
+import Footer from "./components/Footer"
 
 function App() {
+
+  const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true)
+
+  // CHECK IF USER AT THE TOP OF THE PAGE
+  const handleScroll = () => {
+    if (window.scrollY === 0) {
+      setIsTopOfPage(true);
+    }
+    if (window.scrollY !== 0) setIsTopOfPage(false);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  };
+
+  useEffect(() => {
+    handleScroll()
+  }, []);
 
 
   return (
@@ -35,10 +52,10 @@ function App() {
     <div className="app">
 
       <BrowserRouter>
-        <Header />
+        <Header isTopOfPage={isTopOfPage} />
         <Routes>
 
-          <Route element={<RouteWithUserChatComponent />}>
+          <Route element={<RouteWithUserChatComponent/>}>
             {/* Public availabe routes */}
             <Route path="/" element={<HomePage />} />
             <Route path="/product-list" element={<ProductListPage />} />
@@ -73,7 +90,7 @@ function App() {
           </Route>
 
         </Routes>
-        <Footer />
+        <Footer/>
       </BrowserRouter>
     </div>
 

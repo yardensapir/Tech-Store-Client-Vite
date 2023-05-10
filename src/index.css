@@ -4,24 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  margin-bottom: 160px;
-}
+html,
+body ,
 #root,
 .app {
   height: 100%;
-  width: 100%;
-}
-footer {
-  position: absolute;
-  bottom: 0;
-  height: 46px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
 }

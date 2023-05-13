@@ -1,13 +1,9 @@
-
-import CrouselComponent from "../components/CrouselComponent";
+import Slider from "../components/Slider";
 
 const HomePage = () => {
 
-   
-
-    return <div className="flex min-h-[100vh] justify-center">
-        <CrouselComponent />
-  
+    return <div>
+        <Slider />
     </div>
 };
 export default HomePage;

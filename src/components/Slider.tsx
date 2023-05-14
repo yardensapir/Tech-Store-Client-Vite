@@ -1,4 +1,4 @@
-import CrouselComponent from "./CrouselComponent";
+import CrouselComponent from "./CarouselComponent";
 import items from "../data/data";
 import useMediaQuery from "../hooks/useMediaQuery";
 
@@ -15,25 +15,25 @@ const Slider = () => {
             {isAboveMediumScreens ? <>
                 <div className="carousel bg-primary-200 py-2 px-2 w-full h-full">
                     {items.map((item) => {
-                        return <div id={item.id} className="carousel-item h-full w-full">
-                            <CrouselComponent image={item.image} title={item.title} secondTitle={item.title} info={item.info} />
+                        return <div key={item.id} id={item.id} className="carousel-item h-full w-full">
+                            <CrouselComponent image={item.image} title={item.title} secondTitle={item.secondTitle} info={item.info} />
                         </div>
                     })}
                 </div>
-                <div className=" bg-primary-200 flex justify-center w-full py-6 gap-6">
-                    {items.map((item) => <a href={`#${item.id}`} className={`sliderBtn cursor-pointer ${backGroundHover}`}></a>)}
+                <div className=" bg-primary-200 flex justify-center w-full py-12 mb-2 gap-6">
+                    {items.map((item) => <a key={item.id} href={`#${item.id}`} className={`sliderBtn cursor-pointer${backGroundHover}`}></a>)}
                 </div>
             </>
                 : <div>
                     <div className="carousel bg-primary-200 w-full">
                         {items.map((item) => {
-                            return <div id={item.id} className="carousel-item w-full">
-                                <CrouselComponent image={item.image} title={item.title} secondTitle={item.title} info={item.info} /> </div>
+                            return <div key={item.id} id={item.id} className="carousel-item w-full">
+                                <CrouselComponent image={item.image} title={item.title} secondTitle={item.secondTitle} info={item.info} /> </div>
                         })}
 
                     </div>
-                    <div className=" bg-primary-200 flex justify-center w-full py-6 gap-6">
-                        {items.map((item) => <a href={`#${item.id}`} className={`sliderBtn cursor-pointer ${backGroundHover}`}></a>)}
+                    <div className=" bg-primary-200 flex justify-center w-full py-12 mb-2 gap-6">
+                        {items.map((item) => <a key={item.id} href={`#${item.id}`} className={`sliderBtn cursor-pointer ${backGroundHover}`}></a>)}
                     </div>
                 </div>}
         </>

@@ -12,7 +12,7 @@ const CrouselComponent = ({ image, title, secondTitle, info }: Props) => {
     const navigate = useNavigate()
 
     return (
-        <section className=" bg-primary-200 py-10 md:h-full md:pb-0">
+        <div className=" bg-primary-200 py-10 md:h-full md:pb-0">
             <div className="mx-auto w-5/6  md:h-5/6 items-center md:flex mt-32" >
                 <div className='flex flex-col items-start'>
                     <h1 className="text-[65px] drop-shadow-lg text-white text font-semibold font-poppins text-center">{title}</h1>
@@ -26,7 +26,7 @@ const CrouselComponent = ({ image, title, secondTitle, info }: Props) => {
                     <img className=' w-full h-full drop-shadow-lg object-cover' src={image} alt="" />
                 </div>
             </div>
-        </section>
+        </div>
 
     )
 };

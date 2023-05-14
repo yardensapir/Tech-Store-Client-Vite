@@ -1,9 +1,12 @@
+import Prodcuts from "../components/Prodcuts";
 import Slider from "../components/Slider";
 
 const HomePage = () => {
+   
 
-    return <div>
+    return <main>
         <Slider />
-    </div>
+        <Prodcuts/>
+    </main>
 };
 export default HomePage;

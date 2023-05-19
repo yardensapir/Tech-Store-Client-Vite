@@ -13,7 +13,7 @@ const UserChatComponent = () => {
       </label>
       {isChatMenuToggled && (
         // chat Wrapper
-        <div className='bg-primary-400 fixed right-[20px] bottom-[100px]  z-[2] w-[300px]'>
+        <div  className='bg-primary-400 fixed right-[20px] bottom-[100px]  z-[2] w-[300px] border-solid border-4 rounded-md border-primary-300'>
           <div className=' bg-primary-100 p-[13px] mb-[10px] text-white'>
             <h6>Let's Chat - Online</h6>
           </div>
@@ -38,7 +38,7 @@ const UserChatComponent = () => {
             ))}
             <textarea className=" resize-none shadow-none mb-2" placeholder='Your Text Message' id="" ></textarea>
             <div>
-              <button className='  mb-[10px] text-white bg-primary-200 py-2 px-2 rounded-md'>Submit</button>
+              <button className='  mb-[10px] text-white bg-primary-200 py-2 px-2 rounded-md hover:bg-primary-300 transition-all duration-[1s] hover:translate-y-[-3px]'>Submit</button>
             </div>
           </div>
         </div>

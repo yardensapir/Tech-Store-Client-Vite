@@ -1,6 +1,6 @@
 
 import Logo from '../assets/logo-white.png'
-import {BsSearch } from 'react-icons/bs'
+import { BsSearch } from 'react-icons/bs'
 import { Link } from "react-router-dom"
 import { useState } from 'react';
 import { FiShoppingBag } from 'react-icons/fi'
@@ -56,7 +56,7 @@ const Header = ({ isTopOfPage }: Props) => {
                                     </select>
                                     <input type="text" placeholder="Search…" className="input" />
                                     <button className="btn btn-square">
-                                        <BsSearch/>
+                                        <BsSearch />
                                     </button>
 
                                 </div>

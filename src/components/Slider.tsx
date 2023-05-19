@@ -3,7 +3,9 @@ import items from "../data/data";
 import useMediaQuery from "../hooks/useMediaQuery";
 
 
+
 const Slider = () => {
+
 
     const backGroundHover = "transition duration-200 hover:bg-primary-400"
     const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
@@ -13,7 +15,7 @@ const Slider = () => {
     return (
         <>
             {isAboveMediumScreens ? <>
-                <div className="carousel bg-primary-200 py-2 px-2 w-full h-full">
+                <div className="carousel bg-primary-400l">
                     {items.map((item) => {
                         return <div key={item.id} id={item.id} className="carousel-item h-full w-full">
                             <CrouselComponent image={item.image} title={item.title} secondTitle={item.secondTitle} info={item.info} />

@@ -26,8 +26,11 @@ import AdminOrderDetailsPage from "./pages/admin/AdminOrderDetailsPage"
 import RouteWithUserChatComponent from "./components/user/RouteWithUserChatComponent"
 import { useEffect, useState } from "react"
 import Footer from "./components/Footer"
+import ScrollToTop from "./utils/ScrollToTop"
+
 
 function App() {
+
 
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true)
 
@@ -41,6 +44,7 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   };
 
+
   useEffect(() => {
     handleScroll()
   }, []);
@@ -52,10 +56,11 @@ function App() {
     <div className="app">
 
       <BrowserRouter>
+        <ScrollToTop />
         <Header isTopOfPage={isTopOfPage} />
         <Routes>
 
-          <Route element={<RouteWithUserChatComponent/>}>
+          <Route element={<RouteWithUserChatComponent />}>
             {/* Public availabe routes */}
             <Route path="/" element={<HomePage />} />
             <Route path="/product-list" element={<ProductListPage />} />
@@ -90,7 +95,7 @@ function App() {
           </Route>
 
         </Routes>
-        <Footer/>
+        <Footer />
       </BrowserRouter>
     </div>
 

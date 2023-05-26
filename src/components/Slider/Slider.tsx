@@ -1,6 +1,6 @@
-import CrouselComponent from "./CarouselComponent";
-import items from "../data/data";
-import useMediaQuery from "../hooks/useMediaQuery";
+import CrouselComponent from "../Carousel/CarouselComponent";
+import items from "../../data/data";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 
 

@@ -1,5 +1,5 @@
-import items from "../data/data";
-import Card from "./Card";
+import items from "../../data/data";
+import Card from "../Card/Card";
 
 const Prodcuts = () => {
 

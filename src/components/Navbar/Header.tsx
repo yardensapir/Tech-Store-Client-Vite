@@ -1,12 +1,13 @@
 
-import Logo from '../assets/logo-white.png'
+import Logo from '../../assets/logo-white.png'
+
 import { BsSearch } from 'react-icons/bs'
 import { Link } from "react-router-dom"
 import { useState } from 'react';
 import { FiShoppingBag } from 'react-icons/fi'
 import { GrFormClose } from 'react-icons/gr'
 import { RxHamburgerMenu } from 'react-icons/rx'
-import useMediaQuery from '../hooks/useMediaQuery';
+import useMediaQuery from '../../hooks/useMediaQuery';
 
 type Props = {
 

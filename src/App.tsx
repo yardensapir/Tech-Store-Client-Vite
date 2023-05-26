@@ -1,11 +1,11 @@
-import HomePage from "./pages/HomePage"
+import HomePage from "./pages/home-page/HomePage"
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
-import Header from "./components/Header"
-import RegisterPage from "./pages/RegisterPage"
-import ProductDetailsPage from "./pages/ProductDetailsPage"
-import ProductListPage from "./pages/ProductListPage"
-import CartPage from "./pages/CartPage"
-import LoginPage from "./pages/LoginPage"
+import Header from "./components/Navbar/Header"
+import RegisterPage from "./pages/register-page/RegisterPage"
+import ProductDetailsPage from "./pages/product-details/ProductDetailsPage"
+import ProductListPage from "./pages/product-list-page/ProductListPage"
+import CartPage from "./pages/cart-page/CartPage"
+import LoginPage from "./pages/login-page/LoginPage"
 import ProtectedRoutesComponent from "./components/ProtectedRoutesComponent"
 
 // Protected user pages:
@@ -25,7 +25,8 @@ import AdminAnalyticsPage from "./pages/admin/AdminAnalyticsPage"
 import AdminOrderDetailsPage from "./pages/admin/AdminOrderDetailsPage"
 import RouteWithUserChatComponent from "./components/user/RouteWithUserChatComponent"
 import { useEffect, useState } from "react"
-import Footer from "./components/Footer"
+
+import Footer from "./components/Footer/Footer"
 import ScrollToTop from "./utils/ScrollToTop"
 
 

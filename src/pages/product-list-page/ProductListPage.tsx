@@ -1,11 +1,10 @@
-import { useNavigate } from "react-router-dom";
-import ProdcutCard from "../components/ProdcutCard";
-import Rating from "../components/Rating";
-import items from "../data/data";
-import useMediaQuery from "../hooks/useMediaQuery";
+import ProdcutCard from "../../components/Card/ProdcutCard";
+import Rating from "../../components/Rating/Rating";
+import items from "../../data/data";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 const ProductListPage = () => {
-    const navigate = useNavigate()
+
     const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
     return (
 
@@ -118,7 +117,7 @@ const ProductListPage = () => {
 
 
             <div className={isAboveMediumScreens ? "flex flex-wrap justify-end w-3/5 py-2 px-2 mx-auto h-full gap-3 mt-20" : "flex flex-col mt-20 mb-12 px-3 py-2"}>
-                {items.map((product) => <ProdcutCard key={product.id} title={product.title} image={product.image} description={product.info} />)}
+                {items.map((product) => <ProdcutCard numReviews={product.numReviews} rating={product.rating} key={product.id} title={product.title} image={product.image} description={product.info} />)}
             </div>
             <div className="flex justify-center btn-group  py-2 mb-6 mt-3">
                 <button className="btn btn-active">1</button>

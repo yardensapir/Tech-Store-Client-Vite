@@ -1,5 +1,5 @@
-import Prodcuts from "../components/Prodcuts";
-import Slider from "../components/Slider";
+import Prodcuts from "../../components/Product/Prodcuts";
+import Slider from "../../components/Slider/Slider";
 
 const HomePage = () => {
    

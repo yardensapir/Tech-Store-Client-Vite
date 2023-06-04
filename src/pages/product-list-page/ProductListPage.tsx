@@ -60,7 +60,7 @@ const ProductListPage = () => {
                         </div>
                         <hr className=" bg-primary-200 h-[2px] w-full mx-auto" />
                     </div>
-                    <button className="  mt-2 relative left-6 w-[100px] bg-primary-200 px-3 py-2 rounded-md text-white font-semibold transition duration-200 hover:bg-primary-100 hover:translate-y-[-3px]">Filter</button>
+                    <button className="mt-2 relative left-10 w-[100px] bg-primary-200 px-3 py-2 rounded-md text-white font-semibold transition duration-200 hover:bg-primary-100 hover:translate-y-[-3px]">Filter</button>
                 </div>) : <div className="  h-full w-full p-2 bg-white drop-shadow-xl " >
                 <select defaultValue={'default'} className="select select-ghost w-full max-w-xs mt-20">
                     <option value={"default"} disabled>Sort By</option>
@@ -111,7 +111,7 @@ const ProductListPage = () => {
                     </div>
                     <hr className=" bg-primary-200 h-[2px] w-full mx-auto" />
                 </div>
-                <button className="  mt-2 relative left-6 w-[100px] bg-primary-200 px-3 py-2 rounded-md text-white font-semibold transition duration-200 hover:bg-primary-100 hover:translate-y-[-3px]">Filter</button>
+                <button className="  mt-2 relative left-2 w-[100px] bg-primary-200 px-3 py-2 rounded-md text-white font-semibold transition duration-200 hover:bg-primary-100 hover:translate-y-[-3px]">Filter</button>
             </div>}
 
 

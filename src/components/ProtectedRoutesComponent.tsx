@@ -1,5 +1,5 @@
 import { Outlet, Navigate } from "react-router-dom";
-import UserChatComponent from "./user/UserChatComponent";
+import UserChatComponent from "./chat/UserChatComponent";
 
 type Props = {
   admin: boolean;

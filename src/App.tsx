@@ -23,7 +23,7 @@ import AdminOrdersPage from "./pages/admin/AdminOrdersPage"
 import AdminChatsPage from "./pages/admin/AdminChatsPage"
 import AdminAnalyticsPage from "./pages/admin/AdminAnalyticsPage"
 import AdminOrderDetailsPage from "./pages/admin/AdminOrderDetailsPage"
-import RouteWithUserChatComponent from "./components/user/RouteWithUserChatComponent"
+import RouteWithUserChatComponent from "./components/chat/RouteWithUserChatComponent"
 import { useEffect, useState } from "react"
 
 import Footer from "./components/Footer/Footer"

@@ -1,5 +1,11 @@
 
 const UserProfilePage = () => {
-    return <div>UserProfilePage</div>;
+    return (
+        <main className="flex items-center justify-center min-h-[100vh]">
+            <h1>User Profile Page</h1>
+        </main>
+
+
+    )
 };
-export default UserProfilePage;
+export default UserProfilePage

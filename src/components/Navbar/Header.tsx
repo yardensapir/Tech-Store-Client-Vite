@@ -113,15 +113,13 @@ const Header = ({ isTopOfPage }: Props) => {
                             <Link className={textHover} to={"/"}>
                                 Home
                             </Link>
-                            <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/catalouge"}>
+                            <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/product-list"}>
                                 Catalogue
                             </Link>
                             <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/cart"}>Cart</Link>
-                            <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/sign"}>Sign In</Link>
-                            <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/about"}>
-                                About
-                            </Link>
-
+                            <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/login"}>Sign In</Link>
+                            <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/user/my-orders"}>My Orders</Link>
+                            <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/user"}>My Profile</Link>
                         </div>
 
 

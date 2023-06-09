@@ -2,26 +2,31 @@ import items from "../../data/data";
 import RatingComponent from "../../components/Rating/RatingComponent";
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
 import ReviewComponent from "../../components/ReviewComp/ReviewComponent";
-
+import { useParams } from "react-router-dom";
 const ProductDetailsPage = () => {
 
 
-    const isProducInStock = items[0].countInStock > 0 ? "In Stock" : "Item not in stock"
+    const { id: productId } = useParams()
+    const product = items.find((product) => product.id === productId)
+    console.log(product);
+
+
+
+    const isProducInStock = product!.countInStock > 0 ? "In Stock" : "Item not in stock"
 
     return (
 
         <main className="flex flex-wrap items-start mt-24 p-2 md:h-full">
             <div className=" items-start  justify-around px-3 py-2 md:flex">
-
                 <div className="p-6 z-10">
                     <div id="first">
-                        <img className=" h-[150px]" src={items[0].image} alt="" />
+                        <img className=" h-[150px]" src={product!.image} alt="" />
                     </div>
                     <div id="second">
-                        <img className=" h-[150px]" src={items[1].image} alt="" />
+                        {/* <img className=" h-[150px]" src={items[1].image} alt="" /> */}
                     </div>
                     <div id="third">
-                        <img className=" h-[150px]" src={items[2].image} alt="" />
+                        {/* <img className=" h-[150px]" src={items[2].image} alt="" /> */}
                     </div>
                 </div>
 
@@ -38,7 +43,6 @@ const ProductDetailsPage = () => {
                     <hr className="w-full" />
 
                     <p className=" max-w-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita aspernatur dicta voluptas vero fuga enim tempore nemo minima dolores! Ullam saepe eveniet cupiditate alias qui? Excepturi a error repellendus placeat?</p>
-
 
 
                 </div>

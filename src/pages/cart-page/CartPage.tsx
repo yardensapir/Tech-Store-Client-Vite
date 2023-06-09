@@ -6,7 +6,7 @@ const CartPage = () => {
 
   return (
 
-    <main className='flex flex-wrap items-start justify-around py-2 mt-24 min-h-[100vh] '>
+    <main className='flex flex-wrap items-start justify-around py-2 min-h-[100vh] mt-24 '>
       <div >
         <div className=' mb-6 px-2'>
           <HText>Shopping Cart</HText>
@@ -14,6 +14,7 @@ const CartPage = () => {
         <div className='p-2 mb-2'>
 
         <ShoppingCard image={psImage} title='PS 4' price={100} qty={1} />
+       
       
       
         </div>
@@ -21,9 +22,9 @@ const CartPage = () => {
 
 
       </div>
-      <div className='flex flex-col gap-6'>
+      <div className='flex flex-col gap-6 items-center'>
         <div className='flex items-center gap-3 w-full'>
-          <span>
+          <span className=''>
           <HText>Total Products:</HText>
           </span>
           <span>1</span>

@@ -5,6 +5,7 @@ import RatingComponent from "../Rating/RatingComponent";
 
 
 type Props = {
+    productId:string,
     image: string,
     title: string,
     description: string,
@@ -12,7 +13,7 @@ type Props = {
     numReviews: number,
     actionBtn?: () => void;
 };
-const ProdcutCard = ({ image, title, description, rating, numReviews }: Props) => {
+const ProdcutCard = ({ image, title, description, rating, numReviews,productId }: Props) => {
     const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
     const navigate = useNavigate()
 
@@ -30,7 +31,7 @@ const ProdcutCard = ({ image, title, description, rating, numReviews }: Props) =
                 <span>{` ${numReviews} Reviews`}</span>
             </div>
             <div className="flex justify-evenly mb-6  gap-3 items-center">
-                <span className="  font-semibold text-lg">price: $100</span> <button onClick={() => navigate("/product-details")} className="bg-primary-200 px-3 py-2 rounded-md text-white font-semibold transition duration-200 hover:bg-primary-100">See Prodcut</button>
+                <span className="  font-semibold text-lg">price: $100</span> <button onClick={() => navigate(`/product-details/${productId}`)} className="bg-primary-200 px-3 py-2 rounded-md text-white font-semibold transition duration-200 hover:bg-primary-100">See Prodcut</button>
             </div>
         </div>
     </div>

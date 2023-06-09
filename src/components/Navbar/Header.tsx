@@ -42,7 +42,7 @@ const Header = ({ isTopOfPage }: Props) => {
                                 <img src={Logo} alt="Logo" />
                             </div>
                             <Link to="/">
-                                <span className='text-sm font-bold'>Tech Store</span>
+                                <span className='text-sm font-bold hover:text-white transition-all'>Tech Store</span>
                             </Link>
                         </div>
 

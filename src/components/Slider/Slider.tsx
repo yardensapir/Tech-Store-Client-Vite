@@ -15,10 +15,10 @@ const Slider = () => {
     return (
         <>
             {isAboveMediumScreens ? <>
-                <div className="carousel bg-primary-400l">
+                <div className="carousel bg-primary-200">
                     {items.map((item) => {
                         return <div key={item.id} id={item.id} className="carousel-item h-full w-full">
-                            <CrouselComponent image={item.image} title={item.title} secondTitle={item.secondTitle} info={item.info} />
+                            <CrouselComponent productId={item.id} image={item.image} title={item.title} secondTitle={item.secondTitle} info={item.info} />
                         </div>
                     })}
                 </div>
@@ -30,7 +30,7 @@ const Slider = () => {
                     <div className="carousel bg-primary-200 w-full">
                         {items.map((item) => {
                             return <div key={item.id} id={item.id} className="carousel-item w-full">
-                                <CrouselComponent image={item.image} title={item.title} secondTitle={item.secondTitle} info={item.info} /> </div>
+                                <CrouselComponent productId={item.id} image={item.image} title={item.title} secondTitle={item.secondTitle} info={item.info} /> </div>
                         })}
 
                     </div>

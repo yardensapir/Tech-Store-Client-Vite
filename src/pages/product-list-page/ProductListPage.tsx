@@ -1,11 +1,18 @@
 import ProdcutCard from "../../components/Card/ProdcutCard";
 import Rating from "../../components/Rating/Rating";
-import items from "../../data/data";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import { ProductType } from "../../types/types";
+import { useQuery } from "@tanstack/react-query";
+import { fetchProdcuts } from "../../libs/productQuerys";
 
 const ProductListPage = () => {
 
     const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
+
+    // Fetch Data
+    const productQuery = useQuery({ queryKey: ['prodcuts'], queryFn: fetchProdcuts })
+    if (productQuery.isLoading) return <h1>Loading..</h1>
+    if (productQuery.isError) { return <pre>{JSON.stringify(productQuery.error)}</pre> }
     return (
 
         <main>
@@ -117,10 +124,11 @@ const ProductListPage = () => {
 
 
             <div className={isAboveMediumScreens ? "flex flex-wrap justify-end w-3/5 py-2 px-2 mx-auto h-full gap-3 mt-20" : "flex flex-col mt-20 mb-12 px-3 py-2"}>
-                {items.map((product) => <ProdcutCard  numReviews={product.numReviews} rating={product.rating} productId={product.id} key={product.id} title={product.title} image={product.image} description={product.info} />)}
+                {productQuery.data.map((product: ProductType) => <ProdcutCard numReviews={product.numReviews} rating={product.rating} productId={product.id} key={product.id} title={product.title} image={product.image} description={product.info} />)}
+
             </div>
             <div className="flex justify-center btn-group  py-2 mb-6 mt-3">
-                
+
                 <div className="join grid grid-cols-2 gap-3">
                     <button className="join-item btn btn-outline">Previous page</button>
                     <button className="join-item btn btn-outline">Next</button>

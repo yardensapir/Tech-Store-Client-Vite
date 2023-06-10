@@ -3,15 +3,19 @@ import RatingComponent from "../../components/Rating/RatingComponent";
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
 import ReviewComponent from "../../components/ReviewComp/ReviewComponent";
 import { useParams } from "react-router-dom";
+import { ProductType } from "../../types/types";
+import { useQuery } from "@tanstack/react-query";
+import { fetchProdcuts } from "../../libs/productQuerys";
 const ProductDetailsPage = () => {
 
 
     const { id: productId } = useParams()
-    const product = items.find((product) => product.id === productId)
-    console.log(product);
 
+    const productQuery = useQuery({ queryKey: ['prodcuts'], queryFn: fetchProdcuts })
+    if (productQuery.isLoading) return <h1>Loading..</h1>
+    if (productQuery.isError) { return <pre>{JSON.stringify(productQuery.error)}</pre> }
 
-
+    const product = productQuery.data.find((product: ProductType) => product.id === productId)
     const isProducInStock = product!.countInStock > 0 ? "In Stock" : "Item not in stock"
 
     return (

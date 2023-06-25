@@ -13,7 +13,7 @@ const CartPage = () => {
         </div>
         <div className='p-2 mb-2'>
 
-        <ShoppingCard image={psImage} title='PS 4' price={100} qty={1} />
+        <ShoppingCard image={psImage} name='PS 4' price={100} qty={1} />
        
       
       

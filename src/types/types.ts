@@ -1,12 +1,13 @@
 
 export interface ProductType {
   id: string;
-  title: string;
-  secondTitle: string;
-  info: string;
+  name: string;
+  description: string;
   image: string;
   rating: number;
   numReviews: number;
   price: number;
   countInStock: number;
+  attrts: Object[]
+  reviews: []
 }

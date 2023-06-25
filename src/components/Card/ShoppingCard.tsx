@@ -2,18 +2,18 @@ import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
 
 type Props = {
     image: string;
-    title: string;
+    name: string;
     price: number;
     qty: number
 };
-const ShoppingCard = ({ image, title, price, qty }: Props) => {
+const ShoppingCard = ({ image, name, price, qty }: Props) => {
     return (
         <div>
 
             <div className='flex flex-wrap justify-center items-center mt-3 gap-6 '>
                 
                 <img className='w-[120px]' src={image} alt="" />
-                <span>{title}</span>
+                <span>{name}</span>
                 <span>Price: ${price}</span>
                 <div className="flex items-center  gap-3">
                     <h2 className=" font-semibold" >Quantity :</h2>

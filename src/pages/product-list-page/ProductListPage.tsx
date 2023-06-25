@@ -124,7 +124,7 @@ const ProductListPage = () => {
 
 
             <div className={isAboveMediumScreens ? "flex flex-wrap justify-end w-3/5 py-2 px-2 mx-auto h-full gap-3 mt-20" : "flex flex-col mt-20 mb-12 px-3 py-2"}>
-                {productQuery.data.map((product: ProductType) => <ProdcutCard numReviews={product.numReviews} rating={product.rating} productId={product.id} key={product.id} title={product.title} image={product.image} description={product.info} />)}
+                {productQuery.data.map((product: ProductType) => <ProdcutCard numReviews={product.numReviews} price={product.price} rating={product.rating} productId={product.id} key={product.id} name={product.name} image={product.image} description={product.description} />)}
 
             </div>
             <div className="flex justify-center btn-group  py-2 mb-6 mt-3">

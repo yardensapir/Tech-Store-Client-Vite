@@ -16,7 +16,7 @@ const Slider = () => {
     if (productQuery.isLoading) return <h1>Loading..</h1>
     if (productQuery.isError) { return <pre>{JSON.stringify(productQuery.error)}</pre> }
 
-    //    {productQuery.data.map((product: ProductType) => (<Card key={product.id} title={product.title} image={product.image} description={product.info} />))}
+
 
 
     return (
@@ -27,7 +27,7 @@ const Slider = () => {
 
                     {productQuery.data.map((product: ProductType) => {
                         return <div key={product.id} id={product.id} className="carousel-item h-full w-full">
-                            <CrouselComponent productId={product.id} image={product.image} title={product.title} secondTitle={product.secondTitle} info={product.info} />
+                            <CrouselComponent productId={product.id} image={product.image} name={product.name}  info={product.description} />
                         </div>
 
                     })}
@@ -41,7 +41,7 @@ const Slider = () => {
                     <div className="carousel bg-primary-200 w-full">
                         {productQuery.data.map((product: ProductType) => {
                             return <div key={product.id} id={product.id} className="carousel-item h-full w-full">
-                                <CrouselComponent productId={product.id} image={product.image} title={product.title} secondTitle={product.secondTitle} info={product.info} />
+                                <CrouselComponent productId={product.id} image={product.image} name={product.name}  info={product.description} />
                             </div>
 
                         })}

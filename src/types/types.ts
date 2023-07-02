@@ -1,6 +1,6 @@
 
 export interface ProductType {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   image: string;
@@ -8,6 +8,6 @@ export interface ProductType {
   numReviews: number;
   price: number;
   countInStock: number;
-  attrts: Object[]
+  attrts?: Object[]
   reviews: []
 }

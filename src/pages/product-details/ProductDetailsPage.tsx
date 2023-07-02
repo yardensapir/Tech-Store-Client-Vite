@@ -3,42 +3,29 @@ import RatingComponent from "../../components/Rating/RatingComponent";
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
 import ReviewComponent from "../../components/ReviewComp/ReviewComponent";
 import { useParams } from "react-router-dom";
-import { ProductType } from "../../types/types";
-import { useQuery } from "@tanstack/react-query";
-import { fetchProdcuts } from "../../libs/productQuerys";
-import { Helmet } from "react-helmet-async";
+import { useGetProductDetailsQuery } from "../../slices/productsApiSlice";
+
 
 const ProductDetailsPage = () => {
 
+    // Fetch Data
     const { id: productId } = useParams()
+    const { data: product, isLoading, error } = useGetProductDetailsQuery(productId)
+    if (isLoading) { return <h1>Loading..</h1> }
+    if (error) { return <div>{error.toString()}</div> }
 
-    const productQuery = useQuery({ queryKey: ['prodcuts'], queryFn: fetchProdcuts })
-    if (productQuery.isLoading) return <h1>Loading..</h1>
-    if (productQuery.isError) { return <pre>{JSON.stringify(productQuery.error)}</pre> }
-
-    const product = productQuery.data.find((product: ProductType) => product.id === productId)
     const isProducInStock = product!.countInStock > 0 ? "In Stock" : "Item not in stock"
+
 
     return (
         <>
-        <Helmet>
-
-         
-        </Helmet>
             <main className="flex flex-wrap items-start mt-24 p-2 md:h-full">
                 <div className=" items-start  justify-around px-3 py-2 md:flex">
                     <div className="p-6 z-10">
                         <div id="first">
                             <img className=" h-[150px]" src={product!.image} alt="" />
                         </div>
-                        <div id="second">
-                            {/* <img className=" h-[150px]" src={items[1].image} alt="" /> */}
-                        </div>
-                        <div id="third">
-                            {/* <img className=" h-[150px]" src={items[2].image} alt="" /> */}
-                        </div>
                     </div>
-
                     <div className="flex flex-col gap-2 items-start">
                         <hr />
                         <h1 className=" text-2xl">Product</h1>

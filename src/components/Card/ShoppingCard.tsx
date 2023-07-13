@@ -11,7 +11,6 @@ const ShoppingCard = ({ image, name, price, qty }: Props) => {
         <div>
 
             <div className='flex flex-wrap justify-center items-center mt-3 gap-6 '>
-                
                 <img className='w-[120px]' src={image} alt="" />
                 <span>{name}</span>
                 <span>Price: ${price}</span>
@@ -25,13 +24,7 @@ const ShoppingCard = ({ image, name, price, qty }: Props) => {
                         <AiFillPlusCircle />
                     </i>
                 </div>
-
-          
                 <button className='btn'>Delete</button>
-
-
-
-
             </div>
             <hr className='mt-2' />
 

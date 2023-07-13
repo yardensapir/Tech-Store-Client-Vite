@@ -14,8 +14,8 @@ const CrouselComponent = ({ image, name, info, productId }: Props) => {
 
 
     return (
-        <div className="  w-full py-10 bg-primary-200 px-10 h-full">
-            <div className="mx-auto w-5/6  md:h-5/6 items-center md:flex mt-32" >
+        <div className="  py-10 bg-primary-200 px-10 h-full">
+            <div className=" mx-auto w-5/6  md:h-5/6 items-center md:flex mt-32" >
                 <div className='flex flex-col items-start'>
 
                     <h1 className=' drop-shadow-lg text-white font-poppins text-4xl w-[260px] font-bold'>{name}</h1>
@@ -26,7 +26,7 @@ const CrouselComponent = ({ image, name, info, productId }: Props) => {
                     </div>
                 </div>
                 <div>
-                    <img className=' w-full h-full drop-shadow-lg object-cover' src={image} alt="" />
+                    <img className='drop-shadow-lg object-cover' src={image} alt="" />
                 </div>
             </div>
         </div>

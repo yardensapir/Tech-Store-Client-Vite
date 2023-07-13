@@ -10,7 +10,7 @@ type Props = {
 const Card = ({ image, name, description }: Props) => {
   const navigate = useNavigate()
 
-  return <div className="rounded-md border-2 border-primary-400 max-w-xs p-6 h-full mb-6">
+  return <div className="rounded-md border-2 border-primary-400 max-w-xs p-6 h-[514px] mb-6">
     <div>
       <img className="h-[150px] w-full" src={image} alt="" />
     </div>

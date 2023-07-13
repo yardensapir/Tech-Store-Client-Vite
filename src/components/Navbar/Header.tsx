@@ -8,6 +8,7 @@ import { FiShoppingBag } from 'react-icons/fi'
 import { GrFormClose } from 'react-icons/gr'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import useMediaQuery from '../../hooks/useMediaQuery';
+import { useSelector } from 'react-redux';
 
 type Props = {
 
@@ -17,6 +18,10 @@ type Props = {
 
 
 const Header = ({ isTopOfPage }: Props) => {
+
+    const {cartItems} = useSelector((state:any)=>state.cart)
+
+    
 
     const flexBetween = "flex items-center justify-between"
     const textHover = "transition duration-500 hover:text-red-300"
@@ -89,6 +94,7 @@ const Header = ({ isTopOfPage }: Props) => {
                                 <Link className={` flex items-center gap-1 text-white`} to={"/cart"}>
                                     <FiShoppingBag />
                                     Cart
+                                    {cartItems.length > 0 && <span className='badge ml-2'>{cartItems.reduce((a:any,c:any)=> a+ c.qty, 0)}</span>}
                                 </Link>
 
 

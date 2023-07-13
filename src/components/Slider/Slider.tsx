@@ -5,20 +5,24 @@ import { ProductType } from "../../types/types";
 
 
 type Props = {
-    productQuery: [];
-};
 
-const Slider = ({ productQuery }: Props) => {
-    const backGroundHover = "transition duration-200 hover:bg-primary-400"
+    productQuery:[];
+  };
+
+const Slider = ({productQuery}:Props) => {
+
+
+    const backGroundHover = "transition duration-200 hover:bg-primary-400 h-full"
     const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
     return (
         <>
+
             {isAboveMediumScreens ? <>
                 <div className="carousel bg-primary-200">
 
                     {productQuery.map((product: ProductType) => {
-                        return <div key={product._id} id={product._id} className="carousel-item h-full w-full">
-                            <CrouselComponent productId={product._id} image={product.image} name={product.name} info={product.description} />
+                        return <div key={product._id} id={product._id} className="carousel-item overflow-hidden w-full flex justify-center text-left">
+                            <CrouselComponent productId={product._id} image={product.image} name={product.name}  info={product.description} />
                         </div>
 
                     })}
@@ -32,7 +36,7 @@ const Slider = ({ productQuery }: Props) => {
                     <div className="carousel bg-primary-200 w-full">
                         {productQuery.map((product: ProductType) => {
                             return <div key={product._id} id={product._id} className="carousel-item h-full w-full">
-                                <CrouselComponent productId={product._id} image={product.image} name={product.name} info={product.description} />
+                                <CrouselComponent productId={product._id} image={product.image} name={product.name}  info={product.description} />
                             </div>
 
                         })}

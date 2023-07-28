@@ -12,9 +12,6 @@ const cartSlice = createSlice({
     addToCart: (state, action) => {
 
       const item = action.payload;
-
-      
-
       const existItem = state.cartItems.find((x:any) => x._id === item._id);
 
       

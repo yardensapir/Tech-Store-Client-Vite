@@ -24,6 +24,7 @@ const ProductDetailsPage = () => {
     if (isLoading) { return <h1>Loading..</h1> }
     if (error) { return <div>{error.toString()}</div> }
 
+
     const increaseItemQty = () => {
         if (product.countInStock === qty) {
             setIsModalOpen(true)
@@ -44,7 +45,7 @@ const ProductDetailsPage = () => {
 
     return (
         <>
-            <main className="flex flex-wrap items-start mt-24 p-2 md:h-full">
+            <main className="flex flex-wrap items-start mt-24 p-2  sm:h-full">
                 <div className=" items-start  justify-around px-3 py-2 md:flex">
                     <div className="p-6 z-10">
                         <div id="first">
@@ -63,13 +64,9 @@ const ProductDetailsPage = () => {
                         <hr className="w-full" />
                         <span className=" font-semibold"> Price: ${product.price}</span>
                         <hr className="w-full" />
-
                         <p className=" max-w-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita aspernatur dicta voluptas vero fuga enim tempore nemo minima dolores! Ullam saepe eveniet cupiditate alias qui? Excepturi a error repellendus placeat?</p>
 
-
                     </div>
-
-
                 </div>
 
                 {/* Reviews */}
@@ -107,7 +104,6 @@ const ProductDetailsPage = () => {
                     </div>
                     <button className="  mb-6 w-[100px] bg-primary-200 px-3 py-2 rounded-md text-white font-semibold transition duration-200 hover:bg-primary-100 hover:translate-y-[-3px]">Submit</button>
                 </div>
-
                 {isModalOpen && (
                     <div className="modal modal-open">
                         <div className="modal-box">
@@ -121,10 +117,6 @@ const ProductDetailsPage = () => {
                     </div>
 
                 )}
-
-
-
-
             </main>
 
         </>

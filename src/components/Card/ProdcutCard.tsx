@@ -20,7 +20,7 @@ const ProdcutCard = ({ image, name, description, rating, numReviews, productId, 
 
 
 
-    return <div className={isAboveMediumScreens ? 'items-center gap-6 p-3 ml-24 md:flex rounded-lg border-2 border-primary-400' : ""}>
+    return <div className={isAboveMediumScreens ? 'items-center gap-6 p-3 ml-24 md:flex rounded-lg border-2 border-primary-400' : "sm:flex"}>
         <div>
             <img className=" w-full p-3 h-full" src={image} alt="" />
         </div>

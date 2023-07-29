@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../slices/cartSlice';
-
+import { addToCart, removeFromCart } from '../../slices/cartSlice';
+import { ProductType } from '../../types/types';
 type Props = {
     image: string;
     name: string;
     price: number;
     qty: number
-    item: object
+    item: ProductType
 };
 const ShoppingCard = ({ image, name, price, qty, item }: Props) => {
 
@@ -18,7 +18,7 @@ const ShoppingCard = ({ image, name, price, qty, item }: Props) => {
 
 
     const increaseItemQty = () => {
-        //@ts-ignore
+   
         if (item.countInStock === qty) {
             setIsModalOpen(true)
             return
@@ -29,17 +29,20 @@ const ShoppingCard = ({ image, name, price, qty, item }: Props) => {
 
 
     const decreaseItemQty = () => {
-        setQuantity(prevQty => {
-            if (prevQty - 1 < 1) return 1
-            addToCartHandler(item, quantity - 1)
-            return prevQty - 1
-        })
+        if (item.qty === 1) { return }
+        setQuantity(item.qty - 1)
+        addToCartHandler(item, item.qty - 1)
     }
     const dispatch = useDispatch()
 
-    const addToCartHandler = async (product: any, qty: number) => {
+    const addToCartHandler = async (product: ProductType, qty: number) => {
 
         dispatch(addToCart({ ...product, qty }));
+    };
+
+    const removeFromCartHandler = async (item: ProductType) => {
+
+        dispatch(removeFromCart(item));
     };
 
 
@@ -63,7 +66,8 @@ const ShoppingCard = ({ image, name, price, qty, item }: Props) => {
                         <AiFillPlusCircle />
                     </i>
                 </div>
-                <button className='btn'>Delete</button>
+
+                <button onClick={() => removeFromCartHandler(item)} className='btn btn-outline'>Delete</button>
             </div>
             <hr className='mt-2' />
 

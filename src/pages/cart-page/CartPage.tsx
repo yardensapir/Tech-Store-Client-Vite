@@ -2,8 +2,7 @@
 import HText from '../../components/HText/HText';
 import ShoppingCard from '../../components/Card/ShoppingCard';
 import { useSelector } from 'react-redux';
-
-
+import { ProductType } from '../../types/types';
 const CartPage = () => {
 
   const { cartItems, totallPrice, shippingPrice, taxPrice } = useSelector((state: any) => state.cart)
@@ -17,7 +16,7 @@ const CartPage = () => {
               <HText>Shopping Cart</HText>
             </div>
             <div className='p-2 mb-2'>
-              {cartItems.map((cartItem: any) => {
+              {cartItems.map((cartItem: ProductType) => {
                 return <ShoppingCard item={cartItem} key={cartItem._id} image={cartItem.image} name={cartItem.name} price={cartItem.price} qty={cartItem.qty} />
               })}
             </div>

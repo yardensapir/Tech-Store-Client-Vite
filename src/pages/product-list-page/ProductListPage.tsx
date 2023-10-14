@@ -9,10 +9,10 @@ const ProductListPage = () => {
     const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
 
     // Fetch Data
-    const {data:productQuery,isLoading,error} = useGetProductsQuery({})
-    if(isLoading){return <h1>Loading..</h1>}
-    if(error){return <div>{error.toString()}</div>}
-    
+    const { data: productQuery, isLoading, error } = useGetProductsQuery({})
+    if (isLoading) { return <h1>Loading..</h1> }
+    if (error) { return <div>{error.toString()}</div> }
+
     return (
 
         <main>
@@ -20,9 +20,11 @@ const ProductListPage = () => {
                 <div className="fixed left-0 top-0  h-full w-[300px] p-2 bg-white drop-shadow-xl flex flex-col overflow-auto " >
                     <select defaultValue={'default'} className="select select-ghost w-full max-w-xs mt-20">
                         <option value={"default"} disabled>Sort By</option>
-                        <option value="Svelte">Svelte</option>
-                        <option value="Vue">Vue</option>
-                        <option value="React">React</option>
+                        <option value="price_1">Price: Low To Hight</option>
+                        <option value="Price_-1">Price: High to Low</option>
+                        <option value="rating_-1">Customer Rating</option>
+                        <option value="name_1">Name A-Z</option>
+                        <option value="name_-1">Name Z-A</option>
                     </select>
                     <hr className=" bg-primary-200 h-[2px]  w-5/6 mx-auto" />
                     <div className=" mt-3 py-2 px-2 flex flex-col gap-3 mx-auto">
@@ -71,9 +73,11 @@ const ProductListPage = () => {
                 </div>) : <div className="  h-full w-full p-2 bg-white drop-shadow-xl " >
                 <select defaultValue={'default'} className="select select-ghost w-full max-w-xs mt-20">
                     <option value={"default"} disabled>Sort By</option>
-                    <option value="Svelte">Svelte</option>
-                    <option value="Vue">Vue</option>
-                    <option value="React">React</option>
+                    <option value="price_1">Price: Low To Hight</option>
+                    <option value="Price_-1">Price: High to Low</option>
+                    <option value="rating_-1">Customer Rating</option>
+                    <option value="name_1">Name A-Z</option>
+                    <option value="name_-1">Name Z-A</option>
                 </select>
                 <hr className=" bg-primary-200 h-[2px]  w-5/6 mx-auto" />
                 <div className=" mt-3 py-2 px-2 flex flex-col gap-3 mx-auto">
@@ -124,7 +128,7 @@ const ProductListPage = () => {
 
 
             <div className={isAboveMediumScreens ? "flex flex-wrap justify-end w-3/5 py-2 px-2 mx-auto h-full gap-3 mt-20" : "flex flex-col mt-20 mb-12 px-3 py-2"}>
-                {productQuery.map((product: ProductType) => <ProdcutCard numReviews={product.numReviews} price={product.price} rating={product.rating} productId={product._id} key={product._id} name={product.name} image={product.image} description={product.description} />)}
+                {productQuery.products.map((product: ProductType) => <ProdcutCard numReviews={product.numReviews} price={product.price} rating={product.rating} productId={product._id} key={product._id} name={product.name} image={product.image} description={product.description} />)}
 
             </div>
             <div className="flex justify-center btn-group  py-2 mb-6 mt-3">

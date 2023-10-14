@@ -11,8 +11,8 @@ const HomePage = () => {
     if(error){return <div>{error.toString()}</div>}
 
     return <main>
-        <Slider productQuery={productQuery} />
-        <Prodcuts productQuery={productQuery}/>
+        <Slider productQuery={productQuery.products} />
+        <Prodcuts productQuery={productQuery.products}/>
     </main>
 };
 export default HomePage;

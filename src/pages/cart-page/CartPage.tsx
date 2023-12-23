@@ -3,10 +3,15 @@ import HText from '../../components/HText/HText';
 import ShoppingCard from '../../components/Card/ShoppingCard';
 import { useSelector } from 'react-redux';
 import { ProductType } from '../../types/types';
+import { useNavigate } from 'react-router-dom';
 const CartPage = () => {
 
   const { cartItems, totallPrice, shippingPrice, taxPrice } = useSelector((state: any) => state.cart)
 
+  const navigate = useNavigate()
+  const checkoutHandler = () => {
+    navigate('/login?redirect=/shipping');
+  };
   return (
     <>
       {cartItems.length > 0 ?
@@ -22,15 +27,15 @@ const CartPage = () => {
             </div>
           </div>
           <div className='flex flex-col gap-6 items-center'>
-         
-              <span className='flex flex-col gap-3 '>
-                <HText>Total Products: {cartItems.reduce((a: any, c: any) => a + c.qty, 0)}</HText>
-                <HText>Tax Price: ${taxPrice}</HText>
-                <HText>Shipping Price: ${shippingPrice}</HText>
-                <HText>Subtotal Price: ${totallPrice}</HText>
-              </span>
 
-            <button className='btn btn-outline btn-accent'>Proceed To Checkout</button>
+            <span className='flex flex-col gap-3 '>
+              <HText>Total Products: {cartItems.reduce((a: any, c: any) => a + c.qty, 0)}</HText>
+              <HText>Tax Price: ${taxPrice}</HText>
+              <HText>Shipping Price: ${shippingPrice}</HText>
+              <HText>Subtotal Price: ${totallPrice}</HText>
+            </span>
+
+            <button onClick={checkoutHandler} className='btn btn-outline btn-accent'>Proceed To Checkout</button>
           </div>
         </main>
         : <h1 className='flex min-h-[100vh] items-center justify-center basis-3/5 font-poppins text-3xl font-bold'>Cart Is Empty 🐒</h1>}

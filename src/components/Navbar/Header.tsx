@@ -1,14 +1,15 @@
 
 import Logo from '../../assets/logo-white.png'
-
 import { BsSearch } from 'react-icons/bs'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from 'react';
 import { FiShoppingBag } from 'react-icons/fi'
 import { GrFormClose } from 'react-icons/gr'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import useMediaQuery from '../../hooks/useMediaQuery';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useLogoutMutation } from "../../slices/userApiSlice";
+import { logout } from '../../slices/authSlice';
 
 type Props = {
 
@@ -19,9 +20,30 @@ type Props = {
 
 const Header = ({ isTopOfPage }: Props) => {
 
-    const {cartItems} = useSelector((state:any)=>state.cart)
+    const { cartItems } = useSelector((state: any) => state.cart)
+    const { userInfo } = useSelector((state: any) => state.auth)
 
-    
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const [logoutApiCall] = useLogoutMutation()
+
+    const logoutHandler = async () => {
+        try {
+            await logoutApiCall({}).unwrap()
+            dispatch(logout())
+            closeDropDown()
+            navigate('/login')
+        } catch (error) {
+            console.log(error);
+
+        }
+
+    }
+
+
+
+
 
     const flexBetween = "flex items-center justify-between"
     const textHover = "transition duration-500 hover:text-red-300"
@@ -74,30 +96,42 @@ const Header = ({ isTopOfPage }: Props) => {
                     <div className='flex text-sm gap-6'>
                         {isAboveMediumScreens ? (
                             <>
-                                <Link className={`${textHover} flex items-center gap-1 text-white`} to={"/admin/orders"}>
-                                    Admin
-                                </Link>
-                                <div className="dropdown dropdown-end">
-                                    <label tabIndex={0} className="text-white cursor-pointer">Yarden Sapir</label>
-                                    <ul tabIndex={0} className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
-                                        <li onClick={closeDropDown}><Link to="/user/my-orders">My orders</Link></li>
-                                        <li onClick={closeDropDown}><Link to="/user">My profile</Link></li>
-                                        <li onClick={closeDropDown}><button>Logout</button></li>
-                                    </ul>
-                                </div>
-                                <Link className={` flex items-center gap-1 text-white`} to={"/login"}>
-                                    Login
-                                </Link>
-                                <Link className={` flex items-center gap-1 text-white`} to={"/register"}>
-                                    Register
-                                </Link>
-                                <Link className={` flex items-center gap-1 text-white`} to={"/cart"}>
-                                    <FiShoppingBag />
-                                    Cart
-                                    {cartItems.length > 0 && <span className='badge ml-2'>{cartItems.reduce((a:any,c:any)=> a+ c.qty, 0)}</span>}
-                                </Link>
 
 
+
+
+                                {userInfo ? <>
+                                    {userInfo.isAdmin && (
+                                        <Link className={`${textHover} flex items-center gap-1 text-white`} to={"/admin/orders"}>
+                                            Admin
+                                        </Link>
+                                    )}
+                                    <div className="dropdown dropdown-end">
+                                        <label tabIndex={0} className="text-white cursor-pointer">{userInfo.name}</label>
+                                        <ul tabIndex={0} className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
+                                            <li onClick={closeDropDown}><Link to="/user/my-orders">My orders</Link></li>
+                                            <li onClick={closeDropDown}><Link to="/user">My profile</Link></li>
+                                            <li onClick={logoutHandler}><button>Logout</button></li>
+                                        </ul>
+
+                                    </div>
+                                    <Link className={` flex items-center gap-1 text-white`} to={"/cart"}>
+                                        <FiShoppingBag />
+                                        Cart
+                                        {cartItems.length > 0 && <span className='badge ml-2'>{cartItems.reduce((a: any, c: any) => a + c.qty, 0)}</span>}
+                                    </Link>
+                                </> :
+                                    <>
+                                        <Link className={` flex items-center gap-1 text-white`} to={"/login"}>
+                                            Login
+                                        </Link>
+                                        <Link className={` flex items-center gap-1 text-white`} to={"/cart"}>
+                                            <FiShoppingBag />
+                                            Cart
+                                            {cartItems.length > 0 && <span className='badge ml-2'>{cartItems.reduce((a: any, c: any) => a + c.qty, 0)}</span>}
+                                        </Link>
+                                    </>
+                                }
                             </>
                         ) :
                             <button className='z-20' onClick={() => setIsMenuToggled(!isMenuToggled)}>
@@ -116,16 +150,50 @@ const Header = ({ isTopOfPage }: Props) => {
                         </div>
 
                         <div onClick={() => setIsMenuToggled(!isMenuToggled)} className='flex flex-col items-center gap-10 text-2xl'>
-                            <Link className={textHover} to={"/"}>
-                                Home
-                            </Link>
-                            <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/product-list"}>
-                                Catalogue
-                            </Link>
-                            <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/cart"}>Cart</Link>
-                            <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/login"}>Sign In</Link>
-                            <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/user/my-orders"}>My Orders</Link>
-                            <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/user"}>My Profile</Link>
+                            {userInfo ? <>
+
+                                <Link className={textHover} to={"/"}>
+                                    Home
+                                </Link>
+                                <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/product-list"}>
+                                    Catalogue
+                                </Link>
+                                <Link className={`${textHover} flex items-center gap-1`} to={"/cart"}>
+                                    <FiShoppingBag />
+                                    Cart
+                                    {cartItems.length > 0 && <span className='badge ml-2'>{cartItems.reduce((a: any, c: any) => a + c.qty, 0)}</span>}
+                                </Link>
+                                <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/user/my-orders"}>My Orders</Link>
+                                <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/user"}>My Profile</Link>
+
+                                {userInfo.isAdmin && (
+                                    <Link className={`${textHover} flex items-center gap-1`} to={"/admin/orders"}>
+                                        Admin
+                                    </Link>
+                                )}
+                                <Link onClick={logoutHandler} className={`${textHover} flex items-center gap-1`} to={"/admin/orders"}>
+
+                                    Logout
+                                </Link>
+                            </> :
+                                <>
+                                    <Link className={textHover} to={"/"}>
+                                        Home
+                                    </Link>
+                                    <Link onClick={() => setIsMenuToggled(!isMenuToggled)} className={textHover} to={"/product-list"}>
+                                        Catalogue
+                                    </Link>
+                                    <Link className={`${textHover} flex items-center gap-1`} to={"/login"}>
+                                        Login
+                                    </Link>
+                                    <Link className={`${textHover} flex items-center gap-1`} to={"/cart"}>
+                                        <FiShoppingBag />
+                                        Cart
+                                        {cartItems.length > 0 && <span className='badge ml-2'>{cartItems.reduce((a: any, c: any) => a + c.qty, 0)}</span>}
+                                    </Link>
+                                </>
+                            }
+
                         </div>
 
 
@@ -137,11 +205,3 @@ const Header = ({ isTopOfPage }: Props) => {
     )
 };
 export default Header;
-
-
-
-
-
-
-
-

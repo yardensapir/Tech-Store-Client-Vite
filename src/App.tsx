@@ -7,12 +7,15 @@ import ProductListPage from "./pages/product-list-page/ProductListPage"
 import CartPage from "./pages/cart-page/CartPage"
 import LoginPage from "./pages/login-page/LoginPage"
 import ProtectedRoutesComponent from "./components/ProtectedRoutesComponent"
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
 
 // Protected user pages:
 import UserProfilePage from "./pages/user/UserProfilePage"
 import UserOrdersPage from "./pages/user/UserOrdersPage"
 import UserCartDetailsPage from "./pages/user/UserCartDetailsPage"
 import UserOrderDetailsPage from "./pages/user/UserOrderDetailsPage"
+
 // Protected admin pages
 import AdminUsersPage from "./pages/admin/AdminUsersPage"
 import AdminEditUserPage from "./pages/admin/AdminEditUserPage"
@@ -94,9 +97,9 @@ function App() {
             <Route path="/admin/chats" element={<AdminChatsPage />} />
             <Route path="/admin/analytics" element={<AdminAnalyticsPage />} />
           </Route>
-
         </Routes>
         <Footer />
+        <ToastContainer />
       </BrowserRouter>
     </div>
 

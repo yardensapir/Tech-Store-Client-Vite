@@ -1,24 +1,52 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import HText from "../../components/HText/HText";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import Loader from "../../components/Loader/Loader";
+import { useLoginMutation } from "../../slices/userApiSlice";
+import { setCredentials } from "../../slices/authSlice";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const submitHandler = (event: any) => {
+  const [login, { isLoading }] = useLoginMutation()
+  const { userInfo } = useSelector((state: any) => state.auth)
+
+  const { search } = useLocation()
+  const searchParam = new URLSearchParams(search)
+  const redirect = searchParam.get('redirect') || '/'
+
+
+  const submitHandler = async (event: any) => {
     event.preventDefault()
-    console.log({
-      user: {
-        email: email,
-        password: password
-      }
-    });
+
+    try {
+      const res = await login({ email, password }).unwrap()
+      dispatch(setCredentials({ ...res }))
+      navigate(redirect)
+    } catch (error: any) {
+      toast.error(error?.data?.message || error.console.error
+      )
+    }
+
 
 
   }
+
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect)
+    }
+  }, [userInfo, redirect, navigate])
+
+
 
 
   return (<main className="flex items-center justify-center min-h-[100vh]">
@@ -43,8 +71,14 @@ const LoginPage = () => {
             <input value={password} onChange={(event) => setPassword(event.target.value)} type="password" className='w-full border rounded-md p-1' />
           </div>
         </div>
-        <span>Don't have Have Acount Allready? <span onClick={() => navigate('/register')} className='cursor-pointer font-semibold'>Sign Up</span></span>
-        <button className='btn btn-outline btn-accent'>Login</button>
+        <span>Don't have Have Acount Allready? {' '}
+
+          <Link className='cursor-pointer font-semibold' to={redirect ? `/register?redirect=${redirect}` : '/register'}>
+            Sign Up
+          </Link>
+        </span>
+        <button disabled={isLoading} className='btn btn-outline btn-accent'>Login</button>
+        {isLoading && <Loader />}
       </form>
 
 
